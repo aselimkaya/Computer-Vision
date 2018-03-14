@@ -1,4 +1,1 @@
 deneme = SP();
-
-
-deneme.

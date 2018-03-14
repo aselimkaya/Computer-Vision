@@ -34,15 +34,22 @@ while hasFrame(v)
         sacmaPoint.frameIndex = count;
         arr(i) = sacmaPoint;
     end
-    count = count+1;
-    
+    count = count+1;    
 end
-%asd(1,:) = arr.point(:);
-asd = {arr.point};
 
-pointsMatrix = points.Location;
-
-scatter(pointsMatrix(:,1), pointsMatrix(:,2));
-hold on;
 n=3;
-[idx, C] = kmeans(pointsMatrix, n);
+%% Root centroid secildi.
+pointsMatrix = points.Location;
+[~, rootLocation] = kmeans(pointsMatrix, 1);
+root = Centroid();
+root.location = rootLocation;
+%% Diger centroidler hesaplaniyor.
+
+[idx, centroidLocations] = kmeans(pointsMatrix, n);
+buildTree(pointsMatrix,n,root,1);
+
+% scatter(pointsMatrix(:,1), pointsMatrix(:,2));
+% hold on;
+% n=3;
+
+
