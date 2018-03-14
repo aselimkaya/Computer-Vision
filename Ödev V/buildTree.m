@@ -1,6 +1,7 @@
-function buildTree(pointsMatrix,n,parent,level)
+function [out] = buildTree(pointsMatrix,n,parent,level)
 
-if level == 3
+if level == 4
+   out = parent;
    return; 
 end
 
@@ -16,8 +17,10 @@ for i=1:n
     parent.childList = [parent.childList c];
     pMatrix = sortedPoints(sortedPoints(:,1)==i,:,:);
     pMatrix(:,1) = [];
-    buildTree(pMatrix,n,c,level+1);
+    c = buildTree(pMatrix,n,c,level+1);
 end
+
+out = parent;
 
 end
 

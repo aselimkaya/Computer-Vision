@@ -12,7 +12,7 @@ while hasFrame(v)
     
     if count == 1
         points = detectSURFFeatures(I);
-        points = selectStrongest(points,10);
+        points = selectStrongest(points,30);
         for i=1:10
             sacmaPoint = SP();
             sacmaPoint.point = points(i);
@@ -25,7 +25,7 @@ while hasFrame(v)
     end
     
     newPoints = detectSURFFeatures(I);
-    newPoints = selectStrongest(newPoints,10);
+    newPoints = selectStrongest(newPoints,30);
     points = cat(2,points,newPoints);
     
     for i=((count-1)*10+1):count*10
@@ -46,7 +46,7 @@ root.location = rootLocation;
 %% Diger centroidler hesaplaniyor.
 
 [idx, centroidLocations] = kmeans(pointsMatrix, n);
-buildTree(pointsMatrix,n,root,1);
+root = buildTree(pointsMatrix,n,root,1);
 
 % scatter(pointsMatrix(:,1), pointsMatrix(:,2));
 % hold on;
