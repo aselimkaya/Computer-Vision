@@ -12,7 +12,7 @@ while hasFrame(v)
     
     if count == 1
         points = detectSURFFeatures(I);
-        points = selectStrongest(points,10);        
+        points = selectStrongest(points,10);
         [features, ~] = extractFeatures(I, points);
         
         for i=1:10
@@ -21,7 +21,7 @@ while hasFrame(v)
             sacmaPoint.frameIndex = count;
             arr(i) = sacmaPoint;
         end
-
+        
         count = count+1;
         continue;
     end
@@ -29,7 +29,7 @@ while hasFrame(v)
     newPoints = detectSURFFeatures(I);
     newPoints = selectStrongest(newPoints,30);
     [newFeatures, ~] = extractFeatures(I, newPoints);
-
+    
     points = cat(2,points,newPoints);
     features = [features;newFeatures];
     
@@ -38,22 +38,21 @@ while hasFrame(v)
         sacmaPoint.point = features(i);
         sacmaPoint.frameIndex = count;
         arr(i) = sacmaPoint;
-    end   
+    end
     
-    count = count+1;    
+    count = count+1;
 end
 
-n=3;
 %% Root centroid secildi.
-
-
 [~, rootLocation] = kmeans(features, 1);
 root = Centroid();
 root.location = rootLocation;
 %% Diger centroidler hesaplaniyor.
 
-[idx, centroidLocations] = kmeans(features, n);
-root = buildTree(features,n,root,1);
+k=3;
+[idx, centroidLocations] = kmeans(features, k, );
+rootChilds = buildTree(features,k,1);
+
 
 % scatter(pointsMatrix(:,1), pointsMatrix(:,2));
 % hold on;
