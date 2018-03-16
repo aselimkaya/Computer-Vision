@@ -1,8 +1,7 @@
 function [childs] = buildTree(features,k,level)
-
 childs = {};
 
-if level == 4 || k > size(features, 2)
+if level == 12 || k > size(features, 1)
    childs = features;
    return; 
 end

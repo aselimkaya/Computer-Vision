@@ -1,10 +1,10 @@
-function [index] = findPath(point,centroids)
-[~,col] = size(centroids);
-distances = size(1,col);
+function [index] = findCentroid(point,pointList)
+[~,col] = size(pointList);
+distances = zeros(1,col);
 
 for i=1:col
-    x = point.location;
-    y = centroids(i).location;
+    x = point;
+    y = pointList{i}.location;
     dist = 0;
     
     for j=1:64
