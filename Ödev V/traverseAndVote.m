@@ -1,12 +1,11 @@
-function [frameIndex] = traverseAndVote(testFeature, k, nodeList, leafPointMatrix, votingMatrix)
+function [frameIndex] = traverseAndVote(testFeature, k, nodeList, leafPointMatrix)
 [row,col] = size(nodeList);   
     if row == 1 && col == k
         ind = findCentroid(testFeature,nodeList);
-        frameIndex = traverseAndVote(testFeature, k, nodeList{ind}.childList, leafPointMatrix, votingMatrix);        
+        frameIndex = traverseAndVote(testFeature, k, nodeList{ind}.childList, leafPointMatrix);        
     else
-        leafFeatures = nodeList; %34x64        
+        leafFeatures = nodeList;      
         element = findLeaf(testFeature,leafFeatures);
         frameIndex = findFrame(leafPointMatrix,element);
     end
 end
-

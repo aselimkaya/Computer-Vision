@@ -1,7 +1,7 @@
-function [childs] = buildTree(features,k,level)
+function [childs] = buildTree(features,k,level, maxDepth)
 childs = {};
 
-if level == 12 || k > size(features, 1)
+if level == maxDepth || k > size(features, 1)
    childs = features;
    return; 
 end
@@ -16,7 +16,7 @@ for i=1:k
     c.location = centroidLocations(i,:);
     pMatrix = sortedPoints(sortedPoints(:,1)==i,:);
     pMatrix(:,1) = [];    
-    c.childList = buildTree(pMatrix,k,level+1);
+    c.childList = buildTree(pMatrix,k,level+1, maxDepth);
     childs{i} = c;
 end
 
