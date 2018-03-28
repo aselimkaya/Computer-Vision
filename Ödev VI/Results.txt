@@ -1,0 +1,30 @@
+learning rate = 0.0001
+////////////////////////////////
+Step sayisi : 20.000 Batch : 50
+
+8-8 test accuracy 0.9889
+16-16 test accuracy 0.9922
+16-64 test accuracy 0.993
+///////////////////////////////
+Step sayisi : 5.000 Batch : 50
+
+16-64 test accuracy 0.9854
+///////////////////////////////
+Step sayisi : 10.000 Batch : 50
+
+16-64 test accuracy 0.99
+_________________________________________
+
+learning rate = 0.001
+///////////////////////////////
+Step sayisi : 10.000 Batch : 50
+
+16-64 test accuracy 0.9922
+
+_________________________________________
+
+learning rate = 0.01
+///////////////////////////////
+Step sayisi : 10.000 Batch : 50
+
+16-64 test accuracy 0.97
